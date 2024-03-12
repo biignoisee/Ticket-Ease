@@ -22,6 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
     ];
@@ -50,6 +51,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return SlugOptions::create()
             ->generateSlugsFrom(['name'])
-            ->saveSlugsTo('username');
+            ->saveSlugsTo('username')
+            ->doNotGenerateSlugsOnUpdate();
     }
 }
